@@ -1,0 +1,46 @@
+name: DadJokes
+options:
+  bundleIdPrefix: com.aganinyakundi
+  deploymentTarget: '13.0'
+targets:
+  DadJokes:
+    type: application
+    platform: iOS
+    deploymentTarget: '13.0'
+    sources:
+      - path: DadJokes
+    scheme:
+      testTargets:
+        - DadJokesTests
+      gatherCoverageData: false
+    preBuildScripts:
+    - name: SwiftLint
+      script: |
+              ${PODS_ROOT}/SwiftLint/swiftlint --config .swiftlint.yml
+    info:
+      path: DadJokes/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: "DadJokes"
+        CFBundleShortVersionString: 1.0.0
+        CFBundleVersion: "1"
+        ITSAppUsesNonExemptEncryption: false
+        UISupportedInterfaceOrientations: 
+          - UIInterfaceOrientationPotrait
+        UILaunchStoryboardName: LaunchScreen
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+    settings:
+      FRAMEWORK_SEARCH_PATHS:
+        - $(inherited)
+      DEVELOPMENT_TEAM: 12345 #FIXME
+    dependencies:
+      - sdk: Coredata.framework
+  DadJokesTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: DadJokes/DadJokesTests
