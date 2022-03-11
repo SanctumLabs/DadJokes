@@ -1,6 +1,6 @@
 name: DadJokes
 options:
-  bundleIdPrefix: com.aganinyakundi
+  bundleIdPrefix: com.sanctumlabs
   deploymentTarget: '13.0'
 targets:
   DadJokes:
